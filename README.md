@@ -1,20 +1,24 @@
 📖 Passo a Passo de Uso
+Para gerar seu memorial descritivo e tabela de coordenadas, siga este roteiro:
 
-Para gerar seu memorial e tabela com perfeição, siga este roteiro:
+Insira a geometria: Desenhe ou importe a geometria (polígono) do imóvel para o QGIS via DXF.
 
-1 - Insira o polígono: Desenhe ou importe a geometria (linha ou polígono) do imóvel para o QGIS via dxf. Caso não tenha os confrontantes no dxf, adicione uma camada de vetor .shp do tipo ponto, salve ela, pode apagar o index, deixe apenas con ou algo assim para definir os confrontantes. Quando for editar os confrontantes, selecione esse layer, clique em editar e selecione adicionar ponto, clique no mapa e adicione o ponto na testada da confrontação e coloque o lote, quadra, se for urbano, ou apenas a matricula imobiliaria do imóvel e se possível seguido com o nome do proprietário para efeito de cartório de registro de imóveis, gostam de tudo completo, até as casas eles exigem que sejam perfeitamente casadas, cuide do erro de arredondamento, pode ate colocar distancia em cm, e coordenada em milimetros, não é coerente, mas eles aceitam, não existe engenheiro nos cartórios. 
+Dica para confrontantes: Caso não tenha os confrontantes no DXF, adicione uma camada vetorial do tipo ponto (.shp). Salve-a e deixe um campo simples (como con) para definir os confrontantes. Para editar, selecione essa camada, clique em Alternar Edição, adicione o ponto na testada da confrontação e informe o lote/quadra (se urbano) ou a matrícula imobiliária seguida do nome do proprietário.
 
-2 - Selecione o polígono: Utilize a ferramenta de seleção do QGIS para destacar a feição que deseja descrever.
+⚠️ Atenção aos Cartórios (Precisão das Casas Decimais): Os Cartórios de Registro de Imóveis (RI) costumam exigir um grau de precisão geométrica irreal na conferência do memorial. Qualquer divergência de 1 cm é motivo de nota devolutiva. O erro mais comum é usar coordenadas com 3 casas decimais (milímetros) e distâncias com apenas 2 casas (centímetros) — essa diferença matemática de arredondamento altera os fechamentos! Para garantir a total compatibilidade e aceitação cartorária, utilize 3 casas decimais para TUDO (coordenadas, distâncias e percursos).
 
-3 - Acione o botão do Memorial Interativo: Clique no ícone do plugin na sua barra de ferramentas.
+Selecione o polígono: Utilize a ferramenta de seleção do QGIS para destacar a feição que deseja descrever.
 
-4 - Defina os confrontantes: Para cada trecho destacado, selecione no mapa o lote/texto vizinho ou insira as informações manualmente.
+Acione o Memorial Interativo: Clique no ícone do plugin na sua barra de ferramentas.
 
-5 - Complete o tour: Repita o processo até percorrer todo o perímetro do imóvel.
+Defina os confrontantes: Para cada trecho destacado, selecione no mapa o lote/texto vizinho ou insira as informações manualmente.
 
-6 - Salve o memorial descritivo: Escolha o local para gerar o arquivo de texto (.doc).
+Complete o percurso: Repita o processo até percorrer todo o perímetro do imóvel.
 
-7 - Salve a tabela de coordenadas: Exporte os dados técnicos diretamente para um arquivo DXF (padrão CAD/Topograph).
+Salve o memorial descritivo: Escolha o local de destino para gerar o arquivo editável (.doc).
 
+Salve a tabela de coordenadas: Exporte os dados técnicos diretamente para um arquivo DXF (padrão CAD/Topograph).
 
-obs.: Na versão 2.2, o programa inicia a descrição automaticamente pelo ponto mais ao Norte (vértice P1) e segue sempre no sentido horário para garantir a padronização técnica. Se houve mais de uma gleba você pode definir a sequência dos pontos da gleba seguinte, por exemplo, importar um poligon de 4 vértices do lado oeste da via, você vai ter os vértices P1, P2, P3 e P4, no polígono do lado leste da via, se o poligono for de 6 vértices, você pode definir o número 5 para ele iniciar, vai ficar: P5, P6, P7, P8, P9 e P10, lembrando que pode alterar o nome caso haja em matrícula do confrontante o nome do vértice e quiser deixar igual!.
+💡 Nota da versão 2.2: O programa inicia a descrição automaticamente pelo ponto mais ao Norte (vértice P1) e segue no sentido horário para garantir a padronização técnica.
+
+Se houver mais de uma gleba, você pode definir a sequência inicial da área seguinte. Por exemplo: ao importar um polígono de 4 vértices do lado oeste da via, você terá P1, P2, P3 e P4. No polígono de 6 vértices do lado leste, você pode definir a numeração inicial como 5, gerando P5, P6, P7, P8, P9 e P10. Lembre-se de que você também pode renomear os vértices manualmente caso prefira manter a nomenclatura oficial que consta na matrícula do confrontante!
