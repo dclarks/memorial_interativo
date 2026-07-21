@@ -25,7 +25,7 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 # Initialize Qt resources from file resources.py
-from .resources import *
+from . import resources
 # Import the code for the dialog
 from .memorial_interativo_dialog import MemorialInterativoDialog
 import os.path
@@ -160,7 +160,7 @@ class MemorialInterativo:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/memorial_interativo/icon.png'
+        icon_path = os.path.join(os.path.dirname(__file__), 'icon.png')
         self.add_action(
             icon_path,
             text=self.tr(u'Gerar Memorial Descritivo e Tabela de Coordenadas com Distancias e Azimutes em DXF'),

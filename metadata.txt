@@ -1,47 +1,30 @@
 # This file contains metadata for your plugin.
+# This file should be included when you package your plugin.
 
-# This file should be included when you package your plugin.# Mandatory items:
-
+# Mandatory items:
 [general]
-name=Memorial Integrativo Topografia
+name=Memorial Descritivo de Topografia
 qgisMinimumVersion=3.0
-description=Gera memorial descritivo capturando confrontantes com cliques no mapa e exporta tabela de coordenadas em DXF, modelo topograph
-version=1.0
+description=Gera memorial descritivo capturando confrontantes com cliques no mapa e exporta tabela de coordenadas e planta em DXF.
+version=2.2
 author=Thiago Norio Santos Igarashi
 email=thiago.igarashi@gmail.com
 
-about=Plugin gerador de memorial descritivo e tabela de coordenadas, usa o modelo do topograph. Pode ser adicionado confrontantes via texto, ou selecionando no proprio mapa, ponto com nome ou texto que queira que seja redigido no memorial. Ao final, pergunta se você quer gerar também a tabela de coordenadas, com distancias e azimutes
+about=Plugin que gera memoriais descritivos e tabelas de coordenadas no padrão topográfico brasileiro. Desenvolvido por Thiago N. S. Igarashi com assistência técnica de IA (Gemini). Permite a seleção de confrontantes no mapa e exportação para DXF compatível com AutoCAD e Civil 3D.
 
 tracker=https://github.com/dclarks/memorial_interativo/issues
 repository=https://github.com/dclarks/memorial_interativo
 # End of mandatory metadata
 
 # Recommended items:
-
 hasProcessingProvider=no
-# Uncomment the following line and add your changelog:
-# changelog=
 
-# Tags are comma separated with spaces allowed
-tags=python
+changelog=2.2: Compatibilidade total com CADs legados e modernos via estrutura pura ASCII DXF R12; Suporte nativo a acentuação estendida da língua portuguesa (Unicode/Arial TTF); Formatação precisa de sobrescritos (m²) e símbolos topográficos (%%d); Sistema de empilhamento automático para confrontantes longos nas testadas; Controle dinâmico de precisão e casas decimais para coordenadas, distâncias e azimutes na exportação.
 
-homepage=https://github.com/dclarks
-category=Plugins
+tags=surveying, land, legal, memorial, dxf, coordinates, topograph, topografia, tabela, table, memorial descritivo, abnt, geoprocessing
+homepage=https://github.com/dclarks/memorial_interativo
+category=Vector
 icon=icon.png
-# experimental flag
 experimental=False
-
-# deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
-
-# Since QGIS 3.8, a comma separated list of plugins to be installed
-# (or upgraded) can be specified.
-# Check the documentation for more information.
-# plugin_dependencies=
-
-Category of the plugin: Raster, Vector, Database or Web
-# category=
-
-# If the plugin can run on QGIS Server.
 server=False
-
