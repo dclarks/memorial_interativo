@@ -307,7 +307,13 @@ def criar_camada_vertices_qgis(pontos, nomes):
     lbl_settings = QgsPalLayerSettings()
     lbl_settings.fieldName = "nome"
     lbl_settings.setFormat(text_format)
-    lbl_settings.placement = Qgis.LabelPlacement.OrderedPositionsAroundPoint
+    
+    # Compatibilidade com enum de rótulos entre versões do QGIS
+    try:
+        lbl_settings.placement = QgsPalLayerSettings.OrderedPositionsAroundPoint
+    except AttributeError:
+        lbl_settings.placement = Qgis.LabelPlacement.OrderedPositionsAroundPoint
+
     lbl_settings.distance = 3.0
     
     labels = QgsVectorLayerSimpleLabeling(lbl_settings)
@@ -533,7 +539,7 @@ class MenuExportacaoDialog(QDialog):
         grp_precision.setLayout(form_layout)
         layout.addWidget(grp_precision)
         
-        layout.addWidget(QLabel("<small>O arredondamento será applied somente na geração do arquivo.</small>"))
+        layout.addWidget(QLabel("<small>O arredondamento será aplicado somente na geração do arquivo.</small>"))
         layout.addWidget(QLabel("<hr>"))
         
         self.btn_word = QPushButton("📝 Gerar Memorial Descritivo (Word)")
@@ -656,9 +662,10 @@ def gerar_memorial_interativo():
     geom_type = geom.type()
     raw_nodes = []
 
-    if geom_type == Qgis.GeometryType.PolygonGeometry:
+    # Uso do QgsWkbTypes para total compatibilidade com QGIS < 3.30
+    if geom_type == QgsWkbTypes.PolygonGeometry:
         raw_nodes = geom.asMultiPolygon()[0][0] if geom.isMultipart() else geom.asPolygon()[0]
-    elif geom_type == Qgis.GeometryType.LineGeometry:
+    elif geom_type == QgsWkbTypes.LineGeometry:
         raw_nodes = geom.asMultiPolyline()[0] if geom.isMultipart() else geom.asPolyline()
     else: return
 
@@ -722,7 +729,8 @@ def gerar_memorial_interativo():
             
             info_trecho = f"Azimute: {formata_azimute(az_dec)} | Distância: {formata_distancia(dist_raw)} m"
             
-            linha_destaque = QgsRubberBand(canvas, Qgis.GeometryType.LineGeometry)
+            # Compatibilidade do QgsRubberBand para geometrias de linha
+            linha_destaque = QgsRubberBand(canvas, QgsWkbTypes.LineGeometry)
             linha_destaque.setColor(QColor(0, 255, 0)) 
             linha_destaque.setWidth(4)
             linha_destaque.addPoint(p_atual)
